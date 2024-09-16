@@ -48,21 +48,95 @@ To save time in this process, the IT team suggested an ML system that detects in
 
 ## Hypothesis and how to validate?
 
-- List here your project hypothesis(es) and how you envision validating it (them).
+* We suspect the Cherry Leaves affected by the powdery mildew disease display clear signs/symptoms - usually a pale, powdery growth on the surface of the infected leaves of the plant.
+    - Validation will be acheived by conducting an average image study.
 
 ## The rationale to map the business requirements to the Data Visualisations and ML tasks
 
-- List your business requirements and a rationale to map them to the Data Visualisations and ML tasks.
+* **Business Requirement 1:** Data Visualisation
+
+    - We will display the "mean" and "standard deviation" images for infected and uninfected cherry leaves.
+    - We will display the difference between average infected and uninfected cherry leaves.
+    - We will display an image montage for either infecetd or uninfected leaves.
+
+* **Business Requirement 2:** Classification
+
+    - We want to predict if a particular cherry leaf is is or is not infected by powdery mildew disease.
+    - We want to build a binary classifier and generate reports.
 
 ## ML Business Case
 
-- In the previous bullet, you potentially visualised an ML task to answer a business requirement. You should frame the business case using the method we covered in the course.
+### Cherry Leaf Powdery Mildew Classifier (Clf)
+* We want a machine learning (ML) model to predict whether a leaf is infected with powdery mildew or not based on historical image data. This is a binary classification problem where there are two possible outcomes for each image:
+    * **Infected:** Leaf displays signs of powdery mildew infection.
+    * **Not infected:** Leaf shows no sign of powdery mildew infection.
+* It will be a supervised model, and a 2-class, single-label classification model. This means there are two classes (Infected and Not Infected) and each image can only belong to one class; either Infected or Not Infected, but not both at the same time.
+* The ideal outcome would be to provide the client with fast and reliable method of detecting powdery mildew infection.
+* The model sucess metrics are:
+    * Accuracy of 65% or above on the test set.
+* The model output is designed as a flag, indicating if the cherry leaf is healthy or contains powdery mildew. Staff at the clients facilities will upload pictures to the app and the prediction will be made on the fly.
+* Heuristics: The current diagnostic requires staff to conduct a detailed inspection of each tree, taking samples and visually verifying whether signs of powdery mildew are present. This is time consuming and leaves room for diagnostic inaccuracies due to human error.
+* The training data to fit the model comes from [Kaggle](https://www.kaggle.com/datasets/codeinstitute/cherry-leaves). The dataset contains 4208 images - 2104 show healthy cherry leaves, 2104 show leaves containing powdery mildew.
 
 ## Dashboard Design
+### **Page 1: Project Summary**
 
-- List all dashboard pages and their content, either blocks of information or widgets, like buttons, checkboxes, images, or any other items, that your dashboard library supports.
-- Finally, during the project development, you may revisit your dashboard plan to update a given feature (for example, at the beginning of the project, you were confident you would use a given plot to display an insight, but later, you chose another plot type).
+- Project Summary
 
+    - General Information
+
+        - Powdery Mildew is a plant disease that causes a powdery growth on the surface of leaves, buds, young shoots, flowers and fruits. 
+        - Leaves commonly turn yellow and wither, flowers are distorted or fewer in number, and fruit yield and quality are reduced. [Britanica](https://www.britannica.com/science/powdery-mildew)
+
+    - Project Dataset
+
+        - The cherry_leaves dataset [Kaggle](https://www.kaggle.com/datasets/codeinstitute/cherry-leaves) contains 4208 images (photographs of cherry tree leaves). 2104 images show healthy cherry leaves, 2104 images show leaves containing powdery mildew.
+
+    - Link to Additional Information
+
+        - [Royal Horticultural Society](https://www.rhs.org.uk/disease/powdery-mildews)
+
+    - Business Requirements
+
+        - The client is interested in conducting a study to visually differentiate a healthy cherry leaf from one with powdery mildew.
+        - The client is interested in predicting if a cherry leaf is healthy or contains powdery mildew.
+
+### **Page 2: Cherry Tree Leaf Visualiser**
+
+- To Answer Business Requirement 1: The client is interested in conducting a study to visually differentiate a healthy cherry leaf from one with powdery mildew.
+
+    - Checkbox 1 - Display the difference between average and variability as an image.
+    - Checkbox 2 - Display the differences between healthy cherry tree leaves and those containing powdery mildew.
+    - Image Montage - Display a montage of images from the dataset. Filterable by Healthy/Infected.
+
+### **Page 3: Powdery Mildew Detector**
+
+- To Answer Business Requirement 2: The client is interested in predicting if a cherry leaf is healthy or contains powdery mildew.
+
+    - Link to download a set of images to use for live prediction.
+        - [kaggle - cherry_leaves](https://www.kaggle.com/datasets/codeinstitute/cherry-leaves)
+    
+    - File Uploader Widget
+        - Allows the user to upload one or multiple images. 
+        - For each image the widget will display the image and a prediction statement, indicating if a cherry leaf is healthy or contains powdery mildew. The probabbiliy associated with this statement will be displayed.
+        - A table containing the image name and prediction results.
+        - A button allowing user to download the results table.
+
+### **Page 4: Project Hypothesis and Validation**
+
+- Project Hypothesis
+
+    - Describe concolusion
+    - Describe validation
+
+### **Page 5: ML Performance Metrics**
+
+- Label Frequencies for Train, Validation and Test sets
+    -
+- Model History - Accuracy and Losses
+    -
+- Model Evaluation Result
+    -
 ## Unfixed Bugs
 
 - You will need to mention unfixed bugs and why they were unfixed. This section should include shortcomings of the frameworks or technologies used. Although time can be a significant variable for consideration, paucity of time and difficulty understanding implementation is not a valid reason to leave bugs unfixed.
@@ -88,19 +162,15 @@ To save time in this process, the IT team suggested an ML system that detects in
 
 ## Credits
 
-- In this section, you need to reference where you got your content, media and from where you got extra help. It is common practice to use code from other repositories and tutorials. However, it is necessary to be very specific about these sources to avoid plagiarism.
-- You can break the credits section up into Content and Media, depending on what you have included in your project.
-
 ### Content
 
-- The text for the Home page was taken from Wikipedia Article A.
-- Instructions on how to implement form validation on the Sign-Up page were taken from [Specific YouTube Tutorial](https://www.youtube.com/).
-- The icons in the footer were taken from [Font Awesome](https://fontawesome.com/).
+- Code for functions *remove_non_image_file* and *split_train_validation_test_images* taken from Code Institute Course content [Walkthrough 1: Malaria Detector](https://learn.codeinstitute.net/courses/course-v1:code_institute+CI_DA_ML+2021_Q4/courseware/07a3964f7a72407ea3e073542a2955bd/29ae4b4c67ed45a8a97bb9f4dcfa714b/)
 
 ### Media
 
-- The photos used on the home and sign-up page are from This Open-Source site.
-- The images used for the gallery page were taken from this other open-source site.
+- Additional information on powdery mildew from:
+    - [Royal Horticultural Society](https://www.rhs.org.uk/disease/powdery-mildews)
+    - [Britanica](https://www.britannica.com/science/powdery-mildew)
 
 ## Acknowledgements (optional)
 
