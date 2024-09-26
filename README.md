@@ -126,7 +126,7 @@ To save time in this process, the IT team suggested an ML system that detects in
 
 - Project Hypothesis
 
-    - Describe concolusion
+    - Describe conclusion
     - Describe validation
 
 ### **Page 5: ML Performance Metrics**
