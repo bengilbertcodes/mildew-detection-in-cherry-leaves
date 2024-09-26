@@ -18,7 +18,7 @@ def page_summary_body():
         f" to kill the fungus."
         f"The time spent applying this compound is 1 minute." 
         f"The company has thousands of cherry trees located on multiple farms "
-        f"across the country."
+        f"across the country. "
         f"As a result, this manual process is not scalable due to the time "
         f"spent in the manual process inspection.\n\n"
 
