@@ -8,7 +8,7 @@
 4. [Hypothesis and Validation](#hypothesis-and-validation)
 5. [Implementation of the Business Requirements](#the-rationale-to-map-the-business-requirements-to-the-data-visualizations-and-ml-tasks)
 6. [ML Business Case](#ml-business-case)
-7. [Model Summary and Rationale](#model-summary-and-rationale)
+7. [Model Summary](#model-summary)
 8. [Dashboard Design](#dashboard-design)
 9. [CRISP DM Process](#crisp-dm)
 10. [Deployment](#deployment)
@@ -36,36 +36,62 @@ The cherry plantation crop is one of the finest products in their portfolio, and
 - 3 - The client is interested in obtaining a prediction report for newly examined leaves.
 
 ## Epics and User Stories
-
+The project has been divided into five main Epics each consisting of several User Stories; illustrated below including criteria for completion.
 ### **Epic 1**: Information Gathering and Data Collection
-1. **User Story 1**: As a Data Collector, I can gather data from multiple external sources to ensure a comprehensive dataset for analysis.
-2. **User Story 2**: As a Data Analyst, I can clean and preprocess the raw data so that it is ready for visualization and modeling.
-3. **User Story 3**: As a Data Engineer, I can automate data extraction pipelines to minimize manual intervention in data collection.
+1. **User Story 1**: As a Data Collector, I can gather data from external sources to ensure a comprehensive dataset for analysis.
+   * Download the cherry_leaves data set from Kaggle and add to repository.
+2. **User Story 2**: As a Data Analyst/Engineer, I can clean and preprocess the raw data so that it is ready for visualization and modeling.
+    * Remove any non-images.
+    * Sort data into Train, Validation and Test sets.
+
 
 ### **Epic 2**: Data Visualization, Cleaning, and Preparation
 1. **User Story 1**: As a Data Analyst, I can create visual representations of the dataset to identify trends, outliers, and patterns.
+     * Compute and display figures for average size of images in the dataset.
 2. **User Story 2**: As a Data Scientist, I can normalize and transform the data to ensure compatibility with various machine learning models.
+    * Compute and display figures showing 'mean' and 'standard deviation' of images in the dataset.
+    * Create an image montage of healthy ad unhealthy leaves from the dataset.
 3. **User Story 3**: As a Business Analyst, I can interpret the visualized data to generate insights and recommendations for decision-making.
-4. **User Story 4**: As a client I can obtain a fully interactive dashboard so I can view and review the necessary data.
-5. **User Story 5**: As a client I can view images that display the differences between an average healthy and infected cherry leaf so I can better understand the differences in displayed symptoms.
-6. **User Story 6**: As a client I can view a montage of cherry leaves that are either healthy or unhealthy so that I can better understand the differences in displayed symptoms.
+    * Based on image analysis, make case for ML Model.
+4. **User Story 4**: As a client I can view images that display the differences between an average healthy and infected cherry leaf so I can better understand the differences in displayed symptoms.
+    * Within the dashboard, figures of average image size, 'mean' and 'standard deviation' are viewable.
+5. **User Story 5**: As a client I can view a montage of cherry leaves that are either healthy or unhealthy so that I can better understand the differences in displayed symptoms.
+    * Within the dashboard, a montage of either healthy or unhealthy leaves can be viewed.
 
 ### **Epic 3**: Model Training, Validation, and Optimization
-1. **User Story 1**: As a Data Scientist, I can train machine learning models on prepared data to predict key metrics.
+1. **User Story 1**: As a Data Scientist, I can train machine learning models on the dataset to predict key metrics.
+    * ML Model built and trained on the cherry_leaves dataset
+    * The training scriptlogs key metrics (training accuracy, loss and time taken)
 2. **User Story 2**: As a Data Scientist, I can validate the performance of trained models to ensure accuracy and generalizability.
+    * The model's perormance is validated using the validation dataset.
+    * The model demonstartes generalisability by acheiving at least 97% performance on unseen data.
+    * A confusion matrix is provided to help assess model performance.
 3. **User Story 3**: As a Data Engineer, I can optimize the model's hyperparameters to improve performance and reduce overfitting.
+    * Selected hyperparameters are adjusted to improve models performance.
+    * Over/Under fitting is controlled.
 4. **User Story 4**: As a client I want a ML Model that will predict, with an accuracy of at least 97%, whether a cherry leaf is healthy or displaying symptoms of powdery mildew.
+    * The final ML Model acheives over 97% accuracy on the test dataset.
+    * The data set is balanced.
 
 ### **Epic 4**: Dashboard Planning, Designing, and Development
 1. **User Story 1**: As a UX Designer, I can design a user-friendly dashboard layout to present data in an easily accessible format.
+    * Dashboard layout succesfully implemented.
 2. **User Story 2**: As a Developer, I can integrate data sources into the dashboard to ensure real-time updates.
-3. **User Story 3**: As a Product Manager, I can define key performance indicators (KPIs) to be displayed on the dashboard to meet business objectives.
+    * File Uploader widget functioning.
+3. **User Story 3**: As a client I can obtain a fully interactive dashboard so I can view and review the necessary data.
+    * Dashboard layout successfully implemented.
+    * All data and results clearly visable to user.
 4. **User Story 4**: As a client I can view and download a report so that I can obtain results of an ML prediction.
+    * Report is downloadable from the Streamlit dashboard.
 
 ### **Epic 5**: Dashboard Deployment and Release
 1. **User Story 1**: As a DevOps Engineer, I can deploy the dashboard on a secure cloud platform to ensure scalability and availability.
+    * Streamlit Dashboard app successfully deployed to Heroku
 2. **User Story 2**: As a QA Engineer, I can test the dashboard’s functionality to ensure it works correctly before releasing it to stakeholders.
+    ** All functions of the streamlit dashboard work as expected.
 3. **User Story 3**: As a Project Manager, I can release the dashboard to end-users with proper documentation and training to facilitate its use.
+    * Once product deployed to Heroku it can be supplied to the client.
+    * Documentation is created - readme.md
 
 ## Hypothesis and Validation
 
@@ -140,7 +166,8 @@ To meet this requirement the following functionlality will be added to the strea
 * Heuristics: The current diagnostic requires staff to conduct a detailed inspection of each tree, taking samples and visually verifying whether signs of powdery mildew are present. This is time consuming and leaves room for diagnostic inaccuracies due to human error.
 * The training data to fit the model comes from [Kaggle](https://www.kaggle.com/datasets/codeinstitute/cherry-leaves). The dataset contains 4208 images - 2104 show healthy cherry leaves, 2104 show leaves containing powdery mildew.
 
-## Model Summary and Rationale
+
+## Model Summary
 ### Summary
 The CNN model is structured with three convolutional blocks, followed by dense layers that process increasingly complex features from image input. Regularization techniques like batch normalization, dropout, and L2 regularization help prevent overfitting. The model is compiled for binary classification using categorical crossentropy and the Adagrad optimizer.
 
@@ -174,7 +201,7 @@ The CNN model is structured with three convolutional blocks, followed by dense l
 
 ### 4. **Compilation**
    - **Loss ('categorical_crossentropy')**: Suitable for multi-class classification tasks, even for binary classification.
-   - **Optimizer ('adagrad')**: Adagrad adjusts the learning rate dynamically for each parameter, useful for sparse datasets.
+   - **Optimizer ('adagrad')**: Adagrad adjusts the learning rate dynamically for each parameter, used here to compare performance in smaller dataset.
    - **Metrics ('accuracy')**: Accuracy is used to monitor the model's performance during training and evaluation.
 
 ---
