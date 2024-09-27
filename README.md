@@ -8,7 +8,7 @@
 4. [Hypothesis and Validation](#hypothesis-and-validation)
 5. [Implementation of the Business Requirements](#the-rationale-to-map-the-business-requirements-to-the-data-visualizations-and-ml-tasks)
 6. [ML Business Case](#ml-business-case)
-7. [Model Summary](#model-summary)
+7. [ML Model Development](#ml-model-development)
 8. [Dashboard Design](#dashboard-design)
 9. [CRISP DM Process](#crisp-dm)
 10. [Deployment](#deployment)
@@ -167,9 +167,9 @@ To meet this requirement the following functionlality will be added to the strea
 * The training data to fit the model comes from [Kaggle](https://www.kaggle.com/datasets/codeinstitute/cherry-leaves). The dataset contains 4208 images - 2104 show healthy cherry leaves, 2104 show leaves containing powdery mildew.
 
 
-## Model Summary
+## ML Model Development
 ### Summary
-The CNN model is structured with three convolutional blocks, followed by dense layers that process increasingly complex features from image input. Regularization techniques like batch normalization, dropout, and L2 regularization help prevent overfitting. The model is compiled for binary classification using categorical crossentropy and the Adagrad optimizer.
+The final CNN model is structured with three convolutional blocks, followed by dense layers that process increasingly complex features from image input. Regularization techniques like batch normalization, dropout, and L2 regularization help prevent overfitting. The model is compiled for binary classification using categorical crossentropy and the Adagrad optimizer.
 
 ### 1. **Convolutional Layers**
    - **Convolutional Block 1**
@@ -197,14 +197,56 @@ The CNN model is structured with three convolutional blocks, followed by dense l
 ### 3. **Output Layer**
    - `Dense(2, activation='softmax')`: 
      - **Neurons (2)**: The output layer has 2 neurons, indicating a **binary classification** problem.
-     - **Activation ('softmax')**: Softmax produces output values as probabilities, appropriate for multi-class or binary classification.
+     - **Activation ('softmax')**: Softmax produces output values as probabilities, used for multi-class or binary classification.
 
 ### 4. **Compilation**
-   - **Loss ('categorical_crossentropy')**: Suitable for multi-class classification tasks, even for binary classification.
+   - **Loss ('categorical_crossentropy')**: Suitable for multi-class classification tasks, including binary classification.
    - **Optimizer ('adagrad')**: Adagrad adjusts the learning rate dynamically for each parameter, used here to compare performance in smaller dataset.
    - **Metrics ('accuracy')**: Accuracy is used to monitor the model's performance during training and evaluation.
 
----
+### **View results for the final model (v5):**
+<details>
+<summary>CLICK</summary>
+
+![Accuracy Diagram v5](./readme_images/v5_model_training_accuracy.png)
+![Losses Diagram v5](./readme_images/v5_model_training_losses.png)
+
+</details>
+
+### Previous Versions
+
+Trial and error is a fundamental aspect of machine learning, particularly during model experimentation and optimization. In the development process, various hyperparameters were fine-tuned to improve model performance. This included adjusting Dropout rates to prevent overfitting, integrating BatchNormalization to stabilize and accelerate training, and employing early stopping to avoid overtraining. 
+
+In version 5, after these techniques were applied, further experimentation was conducted by transitioning from the Adam optimizer and Sigmoid activation function to Adagrad and Softmax. This shift aimed to explore whether different optimization algorithms and activation functions could yield better convergence and overall model fit. Each change provided valuable insights into how different components of the model interact, ultimately contributing to a more robust and efficient machine learning solution.
+
+<details>
+<summary>View results for v1</summary>
+
+![Accuracy Diagram v1](./readme_images/v1_model_training_accuracy.png)
+![Losses Diagram v1](./readme_images/v1_model_training_losses.png)
+
+</details>
+<details>
+<summary>View results for v2</summary>
+
+![Accuracy Diagram v2](./readme_images/v2_model_training_accuracy.png)
+![Losses Diagram v2](./readme_images/v2_model_training_losses.png)
+
+</details>
+<details>
+<summary>View results for v3</summary>
+
+![Accuracy Diagram v3](./readme_images/v3_model_training_accuracy.png)
+![Losses Diagram v3](./readme_images/v3_model_training_losses.png)
+
+</details>
+<details>
+<summary>View results for v4</summary>
+
+![Accuracy Diagram v4](./readme_images/v4_model_training_accuracy.png)
+![Losses Diagram v4](./readme_images/v4_model_training_losses.png)
+
+</details>
 
 ## Dashboard Design
 ### **Page 1: Project Summary**
