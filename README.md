@@ -332,6 +332,36 @@ Source: [CRISP-DM Help Overview - IBM](https://www.ibm.com/docs/en/spss-modeler/
 5. The deployment process should happen smoothly if all deployment files are fully functional. Click the button Open App on the top of the page to access your App.
 6. If the slug size is too large, then add large files not required for the app to the .slugignore file.
 
+### Forking the Repo
+
+
+## Step 1: Sign in to GitHub
+1. Go to [GitHub](https://github.com).
+2. Log in with your credentials.
+
+---
+
+## Step 2: Navigate to the Repository You Want to Fork
+1. Use the GitHub search bar to find the repository you want to fork, or browse to it.
+   
+---
+
+## Step 3: Fork the Repository
+1. Once you're on the repository page, look for the **"Fork"** button in the upper right corner of the page.
+
+2. Click on the **"Fork"** button. GitHub will create a copy of the repository under your account.
+
+---
+
+## Step 4: Clone the Forked Repository to Your Local Machine
+1. On your forked repo page, click the **"Code"** button.
+2. Choose a clone method: HTTPS, SSH, or GitHub CLI.
+3. Copy the URL (for example: `https://github.com/yourusername/repo-name.git`).
+4. Open a terminal and run the following command to clone the repo:
+   ```bash
+   git clone https://github.com/yourusername/repo-name.git
+
+
 ## Technogies Used
 
 ### Main Data Analysis and Machine Learning Libraries
